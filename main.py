@@ -1,13 +1,12 @@
-import speech_recognition as sr
+from sexta_feira import SextaFeira
 
-recon = sr.Recognizer()
+obj = SextaFeira()
+texto = obj.ouvir()
 
-with sr.Microphone() as source:
-    recon.adjust_for_ambient_noise(source, duration=3)
-    print('Fale algo...')
-    audio = recon.listen(source)
-    print('Reconhecendo...')
+mensagem = 'ok mestre'
+if texto == 'ok sexta-feira':
+    obj.falar(mensagem)
+    print(mensagem)
 
-print(recon.recognize_google(audio, language='pt'))
 
 
