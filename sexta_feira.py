@@ -1,9 +1,10 @@
-from time import sleep
 
 from gtts import gTTS
 from pygame import mixer
 from io import BytesIO
 import speech_recognition as sr
+
+from cotacao import Cotacao
 
 
 class SextaFeira:
@@ -57,7 +58,9 @@ class SextaFeira:
         pass
 
     def cotacao(self):
-        pass
+        obj = Cotacao()
+        texto = obj.cotacao_dolar()
+        return texto
 
     def adicionar_na_agenda(self):
         pass
@@ -70,3 +73,10 @@ class SextaFeira:
 
     def visualizar_lembrete(self):
         pass
+
+    def menu(self, mensagem):
+        match mensagem:
+            case 'ver cotação':
+                self.falar(self.cotacao())
+            case 'previsão do tempo':
+                self.falar('Aqui é a previsão do tempo')
